@@ -4,9 +4,11 @@ const hbs = require('hbs')
 const geocode = require('./util/geocode')
 const forecast = require('./util/forecast')
 const app = express()
+const port = process.env.PORT || 3000
 const pub = path.join(__dirname,'../public')
 const viewname = path.join(__dirname,'../templates/views')
 const part = path.join(__dirname, '../templates/partials')
+
 
 app.set('view engine', 'hbs')
 app.set('views', viewname)
@@ -41,6 +43,6 @@ app.get('/weather', (req, res) => {
 app.get('*', (req, res) => {
   res.send('My 404 page')
 })
-app.listen(process.env.PORT || 3000, () => {
+app.listen(port, () => {
     console.log('Server is on a port 3000')
 })
